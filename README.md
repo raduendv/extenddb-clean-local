@@ -15,7 +15,7 @@ $ make -B
 - curl
 - git
 - jq
-- rust + cargo
+- rust + cargo (install with `curl -sSf https://sh.rustup.rs/ | sh`)
 
 # Environment variables:
 
