@@ -30,12 +30,12 @@ deps:
 		if [ -f extenddb.sqlite-wal ]; then mv extenddb.sqlite-wal deps/storage/; fi; \
 		sed -i.bak 's|path = "extenddb.sqlite"|path = "deps/storage/extenddb.sqlite"|' $(EXTENDDB_CONFIG) && rm -f $(EXTENDDB_CONFIG).bak; \
 		HOME="$(CURDIR)/deps" deps/extenddb/target/release/extenddb serve --config $(EXTENDDB_CONFIG) --write-pid-file; \
-		account_id=$(HOME="$(CURDIR)/deps" deps/extenddb/target/release/extenddb manage --config $(EXTENDDB_CONFIG) --user admin --password "$(EXTENDDB_ADMIN_PASSWORD)" list-accounts | python3 -c 'import json, sys; print(json.load(sys.stdin)[0]["account_id"])'); \
+		account_id=$$(HOME="$(CURDIR)/deps" deps/extenddb/target/release/extenddb manage --config $(EXTENDDB_CONFIG) --user admin --password "$(EXTENDDB_ADMIN_PASSWORD)" list-accounts | jq -r '.[0].account_id'); \
 		HOME="$(CURDIR)/deps" deps/extenddb/target/release/extenddb manage --config $(EXTENDDB_CONFIG) --user admin --password "$(EXTENDDB_ADMIN_PASSWORD)" \
-			create-user --account-id $(account_id) \
+			create-user --account-id $$account_id \
 			--user-name admin --user-password "$(EXTENDDB_ADMIN_PASSWORD)"; \
 		HOME="$(CURDIR)/deps" deps/extenddb/target/release/extenddb manage --config $(EXTENDDB_CONFIG) --user admin --password "$(EXTENDDB_ADMIN_PASSWORD)" \
-			put-user-policy --account-id $(account_id) \
+			put-user-policy --account-id $$account_id \
 			--user-name admin --policy-name FullAccess \
 			--policy-document '{"Version":"2012-10-17","Statement":[{"Effect":"Allow","Action":"dynamodb:*","Resource":"*"}]}'; \
 		HOME="$(CURDIR)/deps" deps/extenddb/target/release/extenddb manage --config $(EXTENDDB_CONFIG) --user $$account_id/admin --password "$(EXTENDDB_ADMIN_PASSWORD)" \
