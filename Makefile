@@ -64,4 +64,4 @@ stop:
 
 .PHONY: clean
 clean:
-	@rm -rfv deps extenddb.sqlite{,-shm,wal}
+	@rm -rfv deps extenddb.sqlite{,-shm,-wal}
