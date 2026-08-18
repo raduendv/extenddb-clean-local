@@ -14,7 +14,7 @@ deps:
 		mkdir -p deps; \
 	fi
 	@if [ ! -d "deps/extenddb" ]; then \
-		git clone git@github.com:ExtendDB/extenddb.git deps/extenddb --branch $(EXTENDDB_BRANCH); \
+		git clone https://github.com/ExtendDB/extenddb.git deps/extenddb --branch $(EXTENDDB_BRANCH); \
 	fi
 	@if [ ! -f "deps/extenddb/target/release/extenddb" ]; then \
 		cd deps/extenddb; \
