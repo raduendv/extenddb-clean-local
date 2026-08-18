@@ -56,7 +56,7 @@ env:
 	echo "export AWS_ACCESS_KEY_ID=$$access_key_id"; \
 	echo "export AWS_SECRET_ACCESS_KEY=$$secret_access_key"; \
 	echo "export AWS_DEFAULT_REGION=us-east-1"; \
-	echo "export export AWS_ENDPOINT_URL=https://127.0.0.1:18443"
+	echo "export AWS_ENDPOINT_URL=https://127.0.0.1:18443"
 
 .PHONY: stop
 stop:
