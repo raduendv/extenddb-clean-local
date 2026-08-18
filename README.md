@@ -17,6 +17,12 @@ $ make -B
 - jq
 - rust + cargo (install with `curl -sSf https://sh.rustup.rs/ | sh`)
 
+## For Ubuntu (via WSL)
+
+```sh
+$ sudo apt-get install -y curl git jq build-essential; curl -sSf https://sh.rustup.rs/ | sh
+```
+
 # Environment variables:
 
 To get the copy/paste variant of the environment variables, run:
