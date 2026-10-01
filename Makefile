@@ -1,6 +1,6 @@
 .DEFAULT_GOAL := run
 EXTENDDB_BACKEND := "sqlite"
-EXTENDDB_BRANCH := "v0.1.6"
+EXTENDDB_BRANCH := "v0.1.13"
 EXTENDDB_CONFIG := "deps/extenddb.toml"
 EXTENDDB_ADMIN_PASSWORD := "radu"
 
